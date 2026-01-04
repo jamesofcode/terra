@@ -145,9 +145,9 @@ const generateQuestions = async () => {
       }
     })
     
-    console.log('Generated flag questions:', questions.value.length)
+    // Questions generated
   } catch (error) {
-    console.error('Error generating questions:', error)
+    // Handle API error silently
   }
 }
 

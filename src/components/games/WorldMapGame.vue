@@ -322,7 +322,7 @@ const loadMapSvg = async () => {
   try {
     // Use the imported SVG text directly
     const svgText = worldSvgText
-    console.log('SVG loaded from import, length:', svgText.length)
+    // SVG loaded successfully
     
     if (mapSvg.value) {
       const parser = new DOMParser()
@@ -334,7 +334,7 @@ const loadMapSvg = async () => {
       }
       
       const importedSvg = svgDoc.documentElement
-      console.log('SVG parsed, tag:', importedSvg.tagName, 'paths found:', importedSvg.querySelectorAll('path').length)
+      // SVG parsed successfully
       
       // Add world-map class to SVG for styling
       importedSvg.classList.add('world-map')
@@ -348,18 +348,18 @@ const loadMapSvg = async () => {
         }
       })
       allCountries.value = Array.from(countries).sort()
-      console.log('Countries extracted:', allCountries.value.length)
+      // Countries extracted
       
       // Clear and append
       mapSvg.value.innerHTML = ''
       mapSvg.value.appendChild(importedSvg)
-      console.log('SVG appended to DOM')
+      // SVG rendered
       
       // Update visuals for already found countries
       updateMapVisuals()
     }
   } catch (error) {
-    console.error('Error loading map SVG:', error)
+    // Error handled silently
   }
 }
 

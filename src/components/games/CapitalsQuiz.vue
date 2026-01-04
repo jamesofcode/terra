@@ -121,10 +121,8 @@ const generateQuestions = async () => {
       country: country.name.common,
       capital: country.capital[0]
     }))
-    
-    console.log('Generated capitals questions:', questions.value.length, questions.value)
   } catch (error) {
-    console.error('Error generating questions:', error)
+    // Handle API error silently
   }
 }
 

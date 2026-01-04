@@ -131,9 +131,9 @@ const generateQuestions = async () => {
       }
     })
     
-    console.log('Generated languages questions:', questions.value.length, questions.value)
+    // Questions generated
   } catch (error) {
-    console.error('Error generating questions:', error)
+    // Handle API error silently
   }
 }
 
