@@ -67,14 +67,7 @@ import { useGameStore } from '../../stores/gameStore'
 
 const gameStore = useGameStore()
 
-const questions = ref([
-  { country: 'France', capital: 'Paris' },
-  { country: 'Germany', capital: 'Berlin' },
-  { country: 'Spain', capital: 'Madrid' },
-  { country: 'Italy', capital: 'Rome' },
-  { country: 'Greece', capital: 'Athens' }
-])
-
+const questions = ref([])
 const currentQuestionIndex = ref(0)
 const userAnswer = ref('')
 const feedback = ref('')
@@ -112,10 +105,32 @@ const nextQuestion = () => {
   }
 }
 
-const accent = ref('#00d4ff')
+const generateQuestions = async () => {
+  try {
+    const response = await fetch('https://restcountries.com/v3.1/all?fields=name,capital')
+    const countries = await response.json()
+    
+    // Filter countries that have capitals
+    const countriesWithCapitals = countries.filter(c => c.capital && c.capital.length > 0)
+    
+    // Shuffle and select 5 random countries
+    const shuffled = countriesWithCapitals.sort(() => Math.random() - 0.5)
+    const selected = shuffled.slice(0, 5)
+    
+    questions.value = selected.map(country => ({
+      country: country.name.common,
+      capital: country.capital[0]
+    }))
+    
+    console.log('Generated capitals questions:', questions.value.length, questions.value)
+  } catch (error) {
+    console.error('Error generating questions:', error)
+  }
+}
 
 onMounted(() => {
   gameStore.setGameType('capitals')
+  generateQuestions()
 })
 </script>
 

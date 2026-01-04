@@ -75,14 +75,7 @@ import { useGameStore } from '../../stores/gameStore'
 
 const gameStore = useGameStore()
 
-const questions = ref([
-  { flag: '🇯🇵', country: 'Japan', options: ['Japan', 'China', 'South Korea', 'Vietnam'] },
-  { flag: '🇧🇷', country: 'Brazil', options: ['Brazil', 'Mexico', 'Colombia', 'Argentina'] },
-  { flag: '🇫🇷', country: 'France', options: ['Italy', 'Netherlands', 'France', 'Germany'] },
-  { flag: '🇦🇺', country: 'Australia', options: ['New Zealand', 'Australia', 'Fiji', 'Samoa'] },
-  { flag: '🇿🇦', country: 'South Africa', options: ['Kenya', 'Nigeria', 'South Africa', 'Ethiopia'] }
-])
-
+const questions = ref([])
 const currentQuestionIndex = ref(0)
 const feedback = ref('')
 const feedbackClass = ref('')
@@ -126,8 +119,41 @@ const nextQuestion = () => {
   }
 }
 
+const generateQuestions = async () => {
+  try {
+    const response = await fetch('https://restcountries.com/v3.1/all?fields=name,flag')
+    const countries = await response.json()
+    
+    // Shuffle and select 5 random countries for questions
+    const shuffled = countries.sort(() => Math.random() - 0.5)
+    const selected = shuffled.slice(0, 5)
+    
+    // Create a pool of all country names for random options
+    const allCountryNames = countries.map(c => c.name.common)
+    
+    questions.value = selected.map(country => {
+      // Get 3 random wrong answers from all countries (excluding the correct answer)
+      const wrongAnswers = allCountryNames
+        .filter(name => name !== country.name.common)
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 3)
+      
+      return {
+        country: country.name.common,
+        flag: country.flag,
+        options: [country.name.common, ...wrongAnswers]
+      }
+    })
+    
+    console.log('Generated flag questions:', questions.value.length)
+  } catch (error) {
+    console.error('Error generating questions:', error)
+  }
+}
+
 onMounted(() => {
   gameStore.setGameType('flags')
+  generateQuestions()
 })
 </script>
 
