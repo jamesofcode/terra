@@ -1,0 +1,234 @@
+/* Dark Theme Palette */
+:root {
+  --dark-bg: #000000;
+  --dark-surface: #121212;
+  --dark-border: #333333;
+  --slate-grey: #4a4a4a;
+  --accent-color: #00d4ff;
+  --accent-hover: #00e5ff;
+  --success-color: #10b981;
+  --danger-color: #ef4444;
+  --warning-color: #f59e0b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--dark-bg);
+  color: #e0e0e0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--slate-grey);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
+}
+
+/* Card Styling */
+.card {
+  background-color: var(--dark-surface) !important;
+  border-color: var(--dark-border) !important;
+  color: #e0e0e0;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--accent-color) !important;
+  border-color: var(--accent-color) !important;
+  color: var(--dark-bg) !important;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover) !important;
+  border-color: var(--accent-hover) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
+}
+
+.btn-outline-primary {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--dark-bg);
+}
+
+.btn-outline-secondary {
+  color: var(--slate-grey);
+  border-color: var(--slate-grey);
+}
+
+.btn-outline-secondary:hover {
+  background-color: var(--slate-grey);
+  border-color: var(--slate-grey);
+  color: white;
+}
+
+/* Input Fields */
+.form-control {
+  background-color: var(--dark-surface) !important;
+  border-color: var(--dark-border) !important;
+  color: #e0e0e0 !important;
+}
+
+.form-control:focus {
+  background-color: var(--dark-surface) !important;
+  border-color: var(--accent-color) !important;
+  color: #e0e0e0 !important;
+  box-shadow: 0 0 0 0.2rem rgba(0, 212, 255, 0.25);
+}
+
+.form-control::placeholder {
+  color: var(--slate-grey);
+}
+
+/* Alert Boxes */
+.alert-info {
+  background-color: var(--dark-surface) !important;
+  border-color: var(--accent-color) !important;
+  color: #e0e0e0;
+}
+
+.alert-success {
+  background-color: rgba(16, 185, 129, 0.1);
+  border-color: var(--success-color) !important;
+  color: var(--success-color);
+}
+
+.alert-danger {
+  background-color: rgba(239, 68, 68, 0.1);
+  border-color: var(--danger-color) !important;
+  color: var(--danger-color);
+}
+
+/* Navigation */
+.navbar-dark {
+  background-color: var(--dark-bg) !important;
+  border-bottom: 1px solid var(--dark-border);
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #e0e0e0 !important;
+}
+
+/* Progress Bar */
+.progress {
+  background-color: var(--dark-surface);
+}
+
+.progress-bar {
+  background-color: var(--accent-color) !important;
+}
+
+/* Badge */
+.badge {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+}
+
+.badge-primary {
+  background-color: var(--accent-color) !important;
+  color: var(--dark-bg) !important;
+}
+
+/* Links */
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+/* Text Utilities */
+.text-muted {
+  color: var(--slate-grey) !important;
+}
+
+.border-secondary {
+  border-color: var(--dark-border) !important;
+}
+
+/* Hero Section */
+.display-4 {
+  color: #e0e0e0;
+  font-weight: 700;
+}
+
+/* Footer */
+footer {
+  background-color: var(--dark-bg) !important;
+  color: var(--slate-grey);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease;
+}
+
+/* Utilities */
+.min-vh-100 {
+  min-height: 100vh;
+}
+
+.bg-dark {
+  background-color: var(--dark-surface) !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .display-4 {
+    font-size: 2rem;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+}
