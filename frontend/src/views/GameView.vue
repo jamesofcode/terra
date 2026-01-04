@@ -19,6 +19,9 @@
         
         <!-- Flags Quiz -->
         <FlagsQuiz v-else-if="type === 'flags'" :key="`flags-${gameKey}`" />
+        
+        <!-- Languages Quiz -->
+        <LanguagesQuiz v-else-if="type === 'languages'" :key="`languages-${gameKey}`" />
       </div>
     </div>
   </div>
@@ -29,6 +32,7 @@ import { ref, watch } from 'vue'
 import WorldMapGame from '../components/games/WorldMapGame.vue'
 import CapitalsQuiz from '../components/games/CapitalsQuiz.vue'
 import FlagsQuiz from '../components/games/FlagsQuiz.vue'
+import LanguagesQuiz from '../components/games/LanguagesQuiz.vue'
 
 const props = defineProps({
   type: String

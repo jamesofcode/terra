@@ -89,6 +89,13 @@ const games = ref([
     type: 'flags',
     icon: 'bi bi-flag',
     description: 'Identify countries by their flags. Test your knowledge of national symbols.'
+  },
+  {
+    id: 4,
+    name: 'Languages Quiz',
+    type: 'languages',
+    icon: 'bi bi-chat-left-text',
+    description: 'Name the languages spoken in each country. Learn about global linguistic diversity.'
   }
 ])
 
